@@ -15,6 +15,8 @@ export default function Home() {
 
   const [showPopup, setShowPopup] = useState(false);
 
+  const [copySuccess, setCopySuccess] = useState("");
+
   const handleMatchTypeChange = (e) => {
     const { name, checked } = e.target;
 
@@ -60,23 +62,6 @@ export default function Home() {
       if (matchTypes.exact) processedLines.push(`[${line}]`);
     });
 
-    // Object.keys(matchTypes).forEach((type) => {
-    //   if (matchTypes[type] && type !== "all") {
-    //     const currentProcessedLines = lines.map((line) => {
-    //       switch (type) {
-    //         case "phrase":
-    //           return `"${line}"`;
-    //         case "exact":
-    //           return `[${line}]`;
-    //         default:
-    //           return line;
-    //       }
-    //     });
-
-    //     processedLines = [...processedLines, ...currentProcessedLines];
-    //   }
-    // });
-
     setResult(processedLines.join("\n"));
   };
 
@@ -91,10 +76,27 @@ export default function Home() {
     });
   };
 
+  const handleCopyToClipboard = () => {
+    if (result) {
+      navigator.clipboard
+        .writeText(result)
+        .then(() => {
+          setCopySuccess("Copied!");
+          setTimeout(() => setCopySuccess(""), 2000);
+        })
+        .catch((err) => {
+          console.error("Failed to copy: ", err);
+        });
+    }
+  };
+
   return (
-    <div className="container max-w-4xl p-4 mx-auto">
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="flex items-start gap-2">
+    <div className="container flex flex-col items-center justify-center max-w-4xl py-20 mx-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="w-[90%] md:w-full space-y-6 mb-5"
+      >
+        <div className="flex flex-col items-start gap-2 md:flex-row">
           <textarea
             className="flex-1 w-full p-3 text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-52"
             placeholder="One word per line"
@@ -152,19 +154,43 @@ export default function Home() {
 
         <button
           type="submit"
-          className="px-4 py-2 text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="w-full px-4 py-2 text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
         >
           Generate
         </button>
       </form>
+
       {result && (
-        <div
-          className="p-4 mt-4 border border-gray-300 rounded-lg shadow-sm"
-          style={{ whiteSpace: "pre-wrap" }}
-        >
-          {result}
+        <div className="relative w-[90%] md:w-full">
+          <div
+            className="p-2 mt-4 border border-gray-200 rounded-sm"
+            style={{ whiteSpace: "pre-wrap" }}
+          >
+            {result}
+          </div>
+          <button
+            onClick={handleCopyToClipboard}
+            className={`${
+              !copySuccess
+                ? "bg-blue-500 hover:bg-blue-600"
+                : "bg-blue-100 hover:bg-none"
+            } absolute top-0 right-0 px-4 py-2 mt-5 mr-2 font-semibold text-white  rounded-lg `}
+          >
+            {/* Copy */}
+            {copySuccess ? (
+              <span className="text-sm font-light text-green-600">
+                {copySuccess}
+              </span>
+            ) : (
+              <span className="text-sm text-white">Copy</span>
+            )}
+          </button>
         </div>
       )}
+
+      {/* {copySuccess && (
+        <span className="text-sm text-green-500">{copySuccess}</span>
+      )} */}
 
       {showPopup && (
         <div className="fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
