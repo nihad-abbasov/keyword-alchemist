@@ -54,22 +54,28 @@ export default function Home() {
 
     let processedLines = [];
 
-    Object.keys(matchTypes).forEach((type) => {
-      if (matchTypes[type] && type !== "all") {
-        const currentProcessedLines = lines.map((line) => {
-          switch (type) {
-            case "phrase":
-              return `"${line}"`;
-            case "exact":
-              return `[${line}]`;
-            default:
-              return line;
-          }
-        });
-
-        processedLines = [...processedLines, ...currentProcessedLines];
-      }
+    lines.forEach((line) => {
+      if (matchTypes.broad) processedLines.push(line);
+      if (matchTypes.phrase) processedLines.push(`"${line}"`);
+      if (matchTypes.exact) processedLines.push(`[${line}]`);
     });
+
+    // Object.keys(matchTypes).forEach((type) => {
+    //   if (matchTypes[type] && type !== "all") {
+    //     const currentProcessedLines = lines.map((line) => {
+    //       switch (type) {
+    //         case "phrase":
+    //           return `"${line}"`;
+    //         case "exact":
+    //           return `[${line}]`;
+    //         default:
+    //           return line;
+    //       }
+    //     });
+
+    //     processedLines = [...processedLines, ...currentProcessedLines];
+    //   }
+    // });
 
     setResult(processedLines.join("\n"));
   };
@@ -90,8 +96,8 @@ export default function Home() {
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="flex items-start gap-2">
           <textarea
-            className="flex-1 w-full p-3 text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            placeholder="Enter keywords..."
+            className="flex-1 w-full p-3 text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-52"
+            placeholder="One word per line"
             value={input}
             onChange={(e) => setInput(e.target.value)}
           ></textarea>
