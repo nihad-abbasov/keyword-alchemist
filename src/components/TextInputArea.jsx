@@ -1,4 +1,4 @@
-export const TextInputArea = ({ input, setInput, handleReset }) => {
+export const TextInputArea = ({ input, setInput, handleReset, handleFileUpload }) => {
   return (
     <div className="flex flex-col items-start gap-2 md:flex-row">
       <textarea
@@ -8,13 +8,31 @@ export const TextInputArea = ({ input, setInput, handleReset }) => {
         onChange={(e) => setInput(e.target.value)}
       ></textarea>
 
-      <button
-        type="button"
-        className="px-4 py-2 text-white bg-gray-500 rounded-lg shadow hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
-        onClick={handleReset}
-      >
-        Clear All Text
-      </button>
+      <div>
+        <button
+          type="button"
+          className="px-4 py-2 text-white bg-gray-500 rounded-lg shadow hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+          onClick={handleReset}
+        >
+          Clear All Text
+        </button>
+
+        <div className="flex mt-3 upload_wrapper">
+          <label
+            htmlFor="file-upload"
+            className="px-4 py-4 text-white bg-blue-500 rounded-lg shadow cursor-pointer hover:bg-blue-600"
+          >
+            Upload Keywords File
+          </label>
+          <input
+            id="file-upload"
+            type="file"
+            className="hidden"
+            onChange={handleFileUpload}
+            accept=".txt"
+          />
+        </div>
+      </div>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { TextInputArea } from "../components/TextInputArea";
 import { MatchTypeSelector } from "../components/MatchTypeSelector";
 import { PopupModal } from "../components/PopupModal";
 import useLoading from "../utils/hooks/useLoading";
+import jsPDF from "jspdf";
 
 export default function Home() {
   const [input, setInput] = useState("");
@@ -97,6 +98,65 @@ export default function Home() {
     }
   };
 
+  const downloadResults = (data, fileName, fileType) => {
+    const blob = new Blob([data], { type: fileType });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const downloadAsCSV = (result) => {
+    const lines = result.split("\n");
+
+    const csvContent =
+      "data:text/csv;charset=utf-8," +
+      lines.map((line) => `"${line}"`).join("\n");
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "download.csv");
+    document.body.appendChild(link);
+
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const downloadAsPDF = (result) => {
+    const doc = new jsPDF();
+
+    const lines = result.split("\n");
+
+    lines.forEach((line, index) => {
+      doc.text(line, 10, 10 + 10 * index);
+    });
+
+    doc.save("download.pdf");
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const text = e.target.result;
+      const keywords = text.split("\n").filter((line) => line.trim() !== "");
+      setInput(keywords.join("\n"));
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <div className="container flex flex-col items-center justify-center max-w-4xl py-20 mx-auto">
       <form
@@ -107,6 +167,7 @@ export default function Home() {
           input={input}
           setInput={setInput}
           handleReset={handleReset}
+          handleFileUpload={handleFileUpload}
         />
         <MatchTypeSelector
           matchTypes={matchTypes}
@@ -125,6 +186,9 @@ export default function Home() {
           result={result}
           handleCopyToClipboard={handleCopyToClipboard}
           copySuccess={copySuccess}
+          // downloadResults={downloadResults}
+          downloadAsCSV={downloadAsCSV}
+          downloadAsPDF={downloadAsPDF}
         />
       )}
 
