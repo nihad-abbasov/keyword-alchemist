@@ -1,6 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { ResultsDisplay } from "../components/ResultsDisplay";
+import { TextInputArea } from "../components/TextInputArea";
+import { MatchTypeSelector } from "../components/MatchTypeSelector";
+import { PopupModal } from "../components/PopupModal";
+import useLoading from "../utils/hooks/useLoading";
 
 export default function Home() {
   const [input, setInput] = useState("");
@@ -16,6 +21,8 @@ export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
 
   const [copySuccess, setCopySuccess] = useState("");
+
+  const isLoading = useLoading(1000);
 
   const handleMatchTypeChange = (e) => {
     const { name, checked } = e.target;
@@ -96,115 +103,32 @@ export default function Home() {
         onSubmit={handleSubmit}
         className="w-[90%] md:w-full space-y-6 mb-5"
       >
-        <div className="flex flex-col items-start gap-2 md:flex-row">
-          <textarea
-            className="flex-1 w-full p-3 text-black border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent min-h-52"
-            placeholder="One word per line"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          ></textarea>
-
-          <button
-            type="button"
-            className="px-4 py-2 text-white bg-gray-500 rounded-lg shadow hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
-            onClick={handleReset}
-          >
-            Reset
-          </button>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-4">
-          <label>
-            <input
-              type="checkbox"
-              name="all"
-              checked={matchTypes.all}
-              onChange={handleMatchTypeChange}
-            />{" "}
-            All
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="broad"
-              checked={matchTypes.broad}
-              onChange={handleMatchTypeChange}
-            />{" "}
-            Broad Match
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="phrase"
-              checked={matchTypes.phrase}
-              onChange={handleMatchTypeChange}
-            />{" "}
-            Phrase Match
-          </label>
-          <label>
-            <input
-              type="checkbox"
-              name="exact"
-              checked={matchTypes.exact}
-              onChange={handleMatchTypeChange}
-            />{" "}
-            Exact Match
-          </label>
-        </div>
-
+        <TextInputArea
+          input={input}
+          setInput={setInput}
+          handleReset={handleReset}
+        />
+        <MatchTypeSelector
+          matchTypes={matchTypes}
+          handleMatchTypeChange={handleMatchTypeChange}
+        />
         <button
           type="submit"
-          className="w-full px-4 py-2 text-white bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="w-1/5 px-4 py-3 text-white transition duration-150 bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
         >
           Generate
         </button>
       </form>
 
       {result && (
-        <div className="relative w-[90%] md:w-full">
-          <div
-            className="p-2 mt-4 border border-gray-200 rounded-sm"
-            style={{ whiteSpace: "pre-wrap" }}
-          >
-            {result}
-          </div>
-          <button
-            onClick={handleCopyToClipboard}
-            className={`${
-              !copySuccess
-                ? "bg-blue-500 hover:bg-blue-600"
-                : "bg-blue-100 hover:bg-none"
-            } absolute top-0 right-0 px-4 py-2 mt-5 mr-2 font-semibold text-white  rounded-lg `}
-          >
-            {/* Copy */}
-            {copySuccess ? (
-              <span className="text-sm font-light text-green-600">
-                {copySuccess}
-              </span>
-            ) : (
-              <span className="text-sm text-white">Copy</span>
-            )}
-          </button>
-        </div>
+        <ResultsDisplay
+          result={result}
+          handleCopyToClipboard={handleCopyToClipboard}
+          copySuccess={copySuccess}
+        />
       )}
 
-      {/* {copySuccess && (
-        <span className="text-sm text-green-500">{copySuccess}</span>
-      )} */}
-
-      {showPopup && (
-        <div className="fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="p-4 bg-white rounded-lg shadow-lg">
-            <p>Please select at least one search type.</p>
-            <button
-              className="px-4 py-2 mt-2 text-white bg-blue-500 rounded-lg"
-              onClick={() => setShowPopup(false)}
-            >
-              Okay
-            </button>
-          </div>
-        </div>
-      )}
+      {showPopup && <PopupModal setShowPopup={setShowPopup} />}
     </div>
   );
 }
