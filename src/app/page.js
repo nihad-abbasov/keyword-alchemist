@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
+
 import { ResultsDisplay } from "../components/ResultsDisplay";
 import { TextInputArea } from "../components/TextInputArea";
 import { MatchTypeSelector } from "../components/MatchTypeSelector";
 import { PopupModal } from "../components/PopupModal";
-import useLoading from "../utils/hooks/useLoading";
-import jsPDF from "jspdf";
+
+import { downloadAsCSV, downloadAsPDF } from "../utils/fileOperations";
 
 export default function Home() {
   const [input, setInput] = useState("");
@@ -22,8 +23,6 @@ export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
 
   const [copySuccess, setCopySuccess] = useState("");
-
-  const isLoading = useLoading(1000);
 
   const handleMatchTypeChange = (e) => {
     const { name, checked } = e.target;
@@ -82,6 +81,22 @@ export default function Home() {
       phrase: false,
       exact: false,
     });
+    window.location.reload();
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (!file) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const text = e.target.result;
+      const keywords = text.split("\n").filter((line) => line.trim() !== "");
+      setInput(keywords.join("\n"));
+    };
+    reader.readAsText(file);
   };
 
   const handleCopyToClipboard = () => {
@@ -113,52 +128,9 @@ export default function Home() {
     URL.revokeObjectURL(url);
   };
 
-  const downloadAsCSV = (result) => {
-    const lines = result.split("\n");
-
-    const csvContent =
-      "data:text/csv;charset=utf-8," +
-      lines.map((line) => `"${line}"`).join("\n");
-
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "download.csv");
-    document.body.appendChild(link);
-
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const downloadAsPDF = (result) => {
-    const doc = new jsPDF();
-
-    const lines = result.split("\n");
-
-    lines.forEach((line, index) => {
-      doc.text(line, 10, 10 + 10 * index);
-    });
-
-    doc.save("download.pdf");
-  };
-
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    if (!file) {
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const text = e.target.result;
-      const keywords = text.split("\n").filter((line) => line.trim() !== "");
-      setInput(keywords.join("\n"));
-    };
-    reader.readAsText(file);
-  };
-
   return (
-    <div className="container flex flex-col items-center justify-center max-w-4xl py-20 mx-auto">
+    // max-w-4xl
+    <div className="flex flex-col items-center justify-center py-20 mx-auto">
       <form
         onSubmit={handleSubmit}
         className="w-[90%] md:w-full space-y-6 mb-5"
