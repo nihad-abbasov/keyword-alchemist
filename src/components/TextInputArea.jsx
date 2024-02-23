@@ -1,4 +1,12 @@
-export const TextInputArea = ({ input, setInput, handleReset, handleFileUpload }) => {
+import { BsUpload } from "react-icons/bs";
+import { MdOutlineDeleteOutline } from "react-icons/md";
+
+export const TextInputArea = ({
+  input,
+  setInput,
+  handleReset,
+  handleFileUpload,
+}) => {
   return (
     <div className="flex flex-col items-start gap-2 md:flex-row">
       <textarea
@@ -11,18 +19,20 @@ export const TextInputArea = ({ input, setInput, handleReset, handleFileUpload }
       <div>
         <button
           type="button"
-          className="px-4 py-2 text-white bg-gray-500 rounded-lg shadow hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+          className="flex flex-row items-center gap-2 px-4 py-2 text-white bg-gray-500 rounded-lg shadow hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 text-sm"
           onClick={handleReset}
         >
+          <MdOutlineDeleteOutline />
           Clear All Text
         </button>
 
         <div className="flex mt-3 upload_wrapper">
           <label
             htmlFor="file-upload"
-            className="px-4 py-4 text-white bg-blue-500 rounded-lg shadow cursor-pointer hover:bg-blue-600"
+            className="flex flex-row items-center gap-2 px-4 py-2 text-black rounded-lg shadow cursor-pointer hover:shadow-lg border border-gray-400 text-sm transition duration-200"
           >
-            Upload Keywords File
+            <BsUpload />
+            Upload File
           </label>
           <input
             id="file-upload"

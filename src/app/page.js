@@ -7,6 +7,8 @@ import { TextInputArea } from "../components/TextInputArea";
 import { MatchTypeSelector } from "../components/MatchTypeSelector";
 import { PopupModal } from "../components/PopupModal";
 
+import { IoSparklesOutline } from "react-icons/io5";
+
 import { downloadAsCSV, downloadAsPDF } from "../utils/fileOperations";
 
 export default function Home() {
@@ -147,8 +149,9 @@ export default function Home() {
         />
         <button
           type="submit"
-          className="w-1/5 px-4 py-3 text-white transition duration-150 bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="flex flex-row justify-center items-center gap-2 w-1/5 px-4 py-3 text-white transition duration-150 bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
         >
+          <IoSparklesOutline />
           Generate
         </button>
       </form>

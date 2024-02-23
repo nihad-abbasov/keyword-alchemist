@@ -29,7 +29,7 @@ export const Header = () => {
       <div className="container flex items-center justify-between gap-3 header_inner">
         <Link href="/" className="flex flex-row items-center justify-start">
           <Image
-            src="/key.gif"
+            src="/alchemy.gif"
             alt="KeywordMagicianDev Logo"
             width={0}
             height={0}
@@ -37,7 +37,7 @@ export const Header = () => {
             className="h-auto w-[10%]"
             priority
           />
-          <h1 className="ml-2 text-sm font-bold text-blue-500">Keyword Magician</h1>
+          <h1 className="ml-2 text-sm font-bold text-blue-500">Keyword Alchemist</h1>
         </Link>
         <ul className="flex flex-row items-center justify-between gap-5">
           {mappedHeaderLinks}

@@ -10,7 +10,7 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Keyword Magician",
+  title: "Keyword Alchemist",
   description: "Created by Nihad",
 };
 
