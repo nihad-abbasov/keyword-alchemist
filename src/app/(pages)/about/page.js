@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { AboutView } from '../../../views/AboutView';
 
 export default function About() {
   const aboutContent = {
@@ -26,19 +27,6 @@ export default function About() {
   };
 
   return (
-    <section className="min-h-[50vh] flex items-center">
-      <article className="flex flex-col items-start justify-between gap-3 content_wrapper">
-        <h1 className="text-3xl font-semibold">{aboutContent.title}</h1>
-        <ul>
-          {aboutContent.texts.map((t) => {
-            return (
-              <li key={t.id} className="mb-3">
-                <p className="text-sm">{t.text}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </article>
-    </section>
+    <AboutView />
   );
 }

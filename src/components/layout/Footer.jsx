@@ -4,7 +4,7 @@ export const Footer = () => {
   const isTheYearsSame = foundationYear === currentYear;
 
   return (
-    <footer className="fixed bottom-0 w-full py-3 mt-8 bg-gray-100">
+    <footer className="w-full py-3 mt-24 bg-gray-100">
       <p className="text-xs text-center text-gray-400">
         Created by Nihad Abbasov © {foundationYear}
         {!isTheYearsSame && `-${currentYear}`}
