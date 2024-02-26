@@ -22,14 +22,14 @@ export const ResultsDisplay = ({
         <button
           onClick={handleCopyToClipboard}
           className={`${
-            !copySuccess
-              ? "bg-purple-600 hover:bg-purple-700"
-              : "bg-blue-100 hover:bg-none"
+            copySuccess
+              ? "bg-blue-100 hover:bg-none"
+              : "bg-green-600 hover:bg-green-700"
           } px-4 py-2 font-semibold text-white rounded-lg transition-colors duration-200`}
         >
           <span
             className={`flex flex-row justify-start items-center gap-1 text-sm ${
-              copySuccess ? `text-green-600` : `text-white`
+              copySuccess ? `text-blue-500` : `text-white`
             }`}
           >
             {copySuccess ? <GiCheckMark /> : <IoCopyOutline />}
@@ -45,7 +45,7 @@ export const ResultsDisplay = ({
 
         <button
           onClick={() => downloadAsPDF(result)}
-          className="flex flex-row justify-start items-center gap-2 px-4 py-2 mr-2 text-white bg-blue-500 rounded hover:bg-blue-600 text-sm"
+          className="flex flex-row items-center justify-start gap-2 px-4 py-2 mr-2 text-sm text-white bg-blue-500 rounded hover:bg-blue-600 transition duration-200"
         >
           <BsDownload />
           Download as PDF
