@@ -35,8 +35,11 @@ export const TextInputArea = ({
         </div>
         <button
           type="button"
-          className="flex flex-row items-center gap-2 px-4 py-2 text-sm text-black transition duration-200 border border-gray-400 rounded-lg shadow hover:bg-gray-100 bg-none focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50"
+          className={`flex flex-row items-center gap-2 px-4 py-2 text-sm text-black transition duration-200 border border-gray-400 rounded-lg shadow ${
+            input ? "hover:bg-gray-100" : "opacity-40 shadow-none"
+          } bg-none focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50`}
           onClick={handleReset}
+          disabled={!input}
         >
           <MdOutlineDeleteOutline />
           Clear All Text

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BurgerMenu } from "./BurgerMenu";
 
 export const Header = () => {
   const headerLinks = [
@@ -34,14 +35,17 @@ export const Header = () => {
             width={0}
             height={0}
             sizes="100vw"
-            className="h-auto w-[10%]"
+            className="h-auto w-[15%] lg:w-[10%]"
             priority
           />
-          <h1 className="ml-2 text-sm font-bold text-blue-500">Keyword Alchemist</h1>
+          <h1 className="ml-2 text-sm font-bold text-blue-500">
+            Keyword Alchemist
+          </h1>
         </Link>
-        <ul className="flex flex-row items-center justify-between gap-5">
+        <ul className="hidden lg:flex flex-row items-center justify-between gap-5">
           {mappedHeaderLinks}
         </ul>
+        <BurgerMenu />
       </div>
     </header>
   );

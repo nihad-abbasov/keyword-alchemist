@@ -10,9 +10,9 @@ export const ResultsDisplay = ({
   downloadAsPDF,
 }) => {
   return (
-    <div className="willSimplyFadeIn relative w-[90%] md:w-full flex flex-row items-start gap-3 mt-4">
+    <div className="willSimplyFadeIn relative w-[90%] lg:w-full flex flex-col lg:flex-row items-start gap-3 mt-4">
       <div
-        className="p-2 border border-gray-200 rounded-sm w-[80%]"
+        className="p-2 border border-gray-200 rounded-sm w-full lg:w-[80%]"
         style={{ whiteSpace: "pre-wrap" }}
       >
         {result}
@@ -36,6 +36,9 @@ export const ResultsDisplay = ({
             {copySuccess ? copySuccess : "Copy"}
           </span>
         </button>
+
+        <p className="my-1 ml-[45%] lg:ml-[15%]">OR</p>
+
         <button
           onClick={() => downloadAsCSV(result)}
           className="flex flex-row items-center justify-between gap-2 px-3 py-2 mr-2 text-sm text-white bg-blue-500 rounded w-max hover:bg-blue-600"

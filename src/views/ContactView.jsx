@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FaInstagram } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 
@@ -16,11 +16,11 @@ export const ContactView = () => {
   return (
     <section className="relative text-gray-600 bg-white body-font">
       <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col w-full mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-medium text-gray-900 sm:text-3xl title-font">
+        <div className="flex flex-col gap-3 w-full mb-12 text-center">
+          <h1 className="mb-4 text-3xl font-semibold text-gray-900 sm:text-3xl title-font">
             Contact Me
           </h1>
-          <p className="mx-auto text-base leading-relaxed lg:w-2/3">
+          <p className="mx-auto text-sm leading-relaxed lg:w-2/3">
             Get in touch with me for any questions or support. I'm here to help
             and answer any query you might have. I look forward to hearing from
             you!
@@ -35,6 +35,7 @@ export const ContactView = () => {
                 width={600}
                 height={400}
                 className="object-cover object-center rounded-lg"
+                priority
               />
             </div>
             {/* <form onSubmit={handleSubmit} className="w-full p-2">
@@ -108,30 +109,30 @@ export const ContactView = () => {
             {/* <h2 className="text-2xl font-medium text-gray-900 sm:text-xl title-font">
               Other Ways to Reach Me
             </h2> */}
-            <p className="mt-2 text-base leading-relaxed">
+            <p className="mt-2 text-sm leading-relaxed">
               Phone: (+994) 77 537 11 65
             </p>
-            <p className="mt-1 text-base leading-relaxed">
+            <p className="mt-1 text-sm leading-relaxed">
               Email: nihad.abbasov.work@gmail.com
             </p>
             <div className="flex justify-center gap-2 mt-8 social-links">
               <a
                 href="https://www.instagram.com/weristnihad/"
-                className="p-2 transition duration-200 rounded hover:bg-gray-700"
+                className="p-2 transition duration-200 rounded"
                 target="_blank"
               >
-                <FaInstagram />
+                <AiFillInstagram />
               </a>
               <a
                 href="https://www.linkedin.com/in/nihad-abbasov-dev/"
-                className="p-2 transition duration-200 rounded hover:bg-gray-700"
+                className="p-2 transition duration-200 rounded"
                 target="_blank"
               >
                 <FaLinkedin />
               </a>
               <a
                 href="https://www.facebook.com/nihad.abbasov.dev/"
-                className="p-2 transition duration-200 rounded hover:bg-gray-700"
+                className="p-2 transition duration-200 rounded"
                 target="_blank"
               >
                 <FaFacebook />

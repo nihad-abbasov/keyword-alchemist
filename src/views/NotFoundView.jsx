@@ -1,11 +1,20 @@
+import Image from "next/image";
 import Link from "next/link";
 import { IoReturnUpBack } from "react-icons/io5";
 
 export const NotFoundView = () => {
   return (
     <section className="flex flex-col items-center justify-center w-full h-full min-h-[50vh] gap-4">
-      <h2 className="text-3xl font-semibold">What are you doing here?</h2>
-      <p className="font-normal text-md">Could not find requested resource.</p>
+      <Image
+        src="/not-found.png"
+        alt="Not Found Image"
+        width={0}
+        height={0}
+        sizes="100vw"
+        className="block w-[705] lg:w-[20%] h-auto"
+      />
+      <h2 className="text-2xl font-semibold">What are you doing here?</h2>
+      <p className="text-sm font-normal text-md">Could not find requested resource.</p>
       <Link
         href="/"
         className="flex flex-row justify-center items-center gap-2 px-5 py-3 text-base font-light text-white transition duration-150 bg-indigo-600 rounded-full hover:bg-indigo-700"

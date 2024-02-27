@@ -6,18 +6,19 @@ export const AboutView = () => {
       <div className="flex flex-col items-start gap-3 mb-5">
         <h1 className="mb-3 text-3xl font-bold text-center">My Story</h1>
         <div className="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
-          <div className="w-[60%] max-w-[60%]">
-          <Image
-            src="/story.png"
-            alt="My Story Illustration"
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="w-full h-auto"
-          />
+          <div className="w-[20%] max-w-[60%]">
+            <Image
+              src="/story.png"
+              alt="My Story Illustration"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="w-full h-auto"
+              priority
+            />
           </div>
 
-          <div className="flex flex-col w-[80%] gap-2">
+          <div className="flex flex-col w-full lg:w-[80%] gap-2">
             <p className="text-sm text-justify">
               I am currently working at an affiliate marketing oriented company
               and our marketing team needs automation-wise tools to get their
@@ -41,41 +42,40 @@ export const AboutView = () => {
       <div className="flex flex-col items-end gap-3 mt-8">
         <h2 className="mb-3 text-3xl font-bold text-end">App Features</h2>
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <ul className="flex flex-col items-start gap-3 text-sm list-disc w-[80%]">
+          <ul className="flex flex-col items-start gap-3 text-sm list-disc w-full lg:w-[80%]">
             <li className="">
-              - User makes an input of some data to the textbox and clicks to
-              generate, and gets the variations for his selection, i.e., if he
-              checked exact and phrase search type checkboxes, they will be
+              You can make an input of some data to the textbox and click to
+              generate, and then get the variations for your selection, i.e., if
+              you checked exact and phrase search type checkboxes, they will be
               generated.
             </li>
             <li className="">
-              - User can upload a file (bulk upload) to avoid the copy-paste
-              challenge to easily upload his keywords in bulk.
+              You can upload a file (bulk upload) to avoid the copy-paste
+              challenge to easily upload your keywords in bulk.
             </li>
             <li className="">
-              - User can copy the results from the appearing table, or he can just
-              simply click the copy button to copy the result to his clipboard.
+              You can copy the results from the appearing table, just simply
+              click the copy button to copy the result to your clipboard.
             </li>
             <li className="">
-              - User can easily download the result as a PDF file. Although it is
-              better practice to have the keyword results as a CSV file, some
-              works are going on to handle the "Download as CSV" feature, which
-              will be available soon.
+              You can easily download the results both as a CSV file and as a
+              PDF file.
             </li>
             <li className="">
-              - After generating, the user can clear the textbox to make the next
+              After generating, You can clear the textbox to make the next
               input.
             </li>
           </ul>
-          <div className="w-[60%] max-w-[60%]">
-          <Image
-            src="/features.png"
-            alt="App Features Illustration"
-            width={0}
-            height={0}
-            sizes="100vw"
-            className="w-full h-auto"
-          />
+          <div className="w-[30%] max-w-[60%]">
+            <Image
+              src="/features.png"
+              alt="App Features Illustration"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="w-full h-auto"
+              priority
+            />
           </div>
         </div>
       </div>
