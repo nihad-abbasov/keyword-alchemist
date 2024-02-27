@@ -4,12 +4,12 @@ export const AboutView = () => {
   return (
     <section className="flex flex-col gap-5 px-4 py-8 mx-auto mt-8">
       <div className="flex flex-col items-start gap-3 mb-5">
-        <h1 className="mb-3 text-3xl font-bold text-center">Our Story</h1>
+        <h1 className="mb-3 text-3xl font-bold text-center">My Story</h1>
         <div className="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
           <div className="w-[60%] max-w-[60%]">
           <Image
             src="/story.png"
-            alt="Our Story Illustration"
+            alt="My Story Illustration"
             width={0}
             height={0}
             sizes="100vw"

@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
 .container {
   width: 70%;
   margin: 0 auto;
@@ -12,7 +26,7 @@
 }
 
 .willSimplyFadeIn {
-  animation: .7s simplyFadeIn;
+  animation: 0.7s simplyFadeIn;
 }
 
 @keyframes fadeIn {

@@ -132,7 +132,7 @@ export default function Home() {
 
   return (
     // max-w-4xl
-    <div className="flex flex-col items-center justify-center py-20 mx-auto">
+    <div className="flex flex-col items-center justify-center w-full py-20 mx-auto">
       <form
         onSubmit={handleSubmit}
         className="w-[90%] md:w-full space-y-6 mb-5"
@@ -149,7 +149,7 @@ export default function Home() {
         />
         <button
           type="submit"
-          className="flex flex-row justify-center items-center gap-2 w-1/5 px-4 py-3 text-white transition duration-150 bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="flex flex-row items-center justify-center w-1/5 gap-2 px-4 py-3 text-white transition duration-150 bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
         >
           <IoSparklesOutline />
           Generate

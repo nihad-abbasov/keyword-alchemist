@@ -9,7 +9,7 @@ export const Main = ({ children }) => {
   return isLoading ? (
     <Loading />
   ) : (
-    <main className="container mx-auto willFadeIn pt-7 md:py-10">
+    <main className="container flex flex-col justify-center mx-auto willFadeIn pt-7 md:py-10">
       {children}
     </main>
   );
