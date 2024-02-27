@@ -36,16 +36,17 @@ export const ResultsDisplay = ({
             {copySuccess ? copySuccess : "Copy"}
           </span>
         </button>
-        {/* <button
+        <button
           onClick={() => downloadAsCSV(result)}
-          className="px-4 py-2 mr-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+          className="flex flex-row items-center justify-between gap-2 px-3 py-2 mr-2 text-sm text-white bg-blue-500 rounded w-max hover:bg-blue-600"
         >
+          <BsDownload />
           Download as CSV
-        </button> */}
+        </button>
 
         <button
           onClick={() => downloadAsPDF(result)}
-          className="flex flex-row items-center justify-start gap-2 px-4 py-2 mr-2 text-sm text-white bg-blue-500 rounded hover:bg-blue-600 transition duration-200"
+          className="flex flex-row items-center justify-between gap-2 px-3 py-2 mr-2 text-sm text-white transition duration-200 bg-blue-500 rounded w-max hover:bg-blue-600"
         >
           <BsDownload />
           Download as PDF

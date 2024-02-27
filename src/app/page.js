@@ -83,7 +83,7 @@ export default function Home() {
       phrase: false,
       exact: false,
     });
-    window.location.reload();
+    // window.location.reload();
   };
 
   const handleFileUpload = (event) => {
