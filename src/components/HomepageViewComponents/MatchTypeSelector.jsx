@@ -1,7 +1,7 @@
 export const MatchTypeSelector = ({ matchTypes, handleMatchTypeChange }) => {
   return (
     <div className="flex flex-wrap items-center gap-4">
-      <label>
+      <label className="flex flex-row items-center justify-center gap-0.5 text-sm">
         <input
           type="checkbox"
           name="all"
@@ -10,7 +10,7 @@ export const MatchTypeSelector = ({ matchTypes, handleMatchTypeChange }) => {
         />{" "}
         All
       </label>
-      <label>
+      <label className="flex flex-row items-center justify-center gap-0.5 text-sm">
         <input
           type="checkbox"
           name="broad"
@@ -19,7 +19,7 @@ export const MatchTypeSelector = ({ matchTypes, handleMatchTypeChange }) => {
         />{" "}
         Broad Match
       </label>
-      <label>
+      <label className="flex flex-row items-center justify-center gap-0.5 text-sm">
         <input
           type="checkbox"
           name="phrase"
@@ -28,7 +28,7 @@ export const MatchTypeSelector = ({ matchTypes, handleMatchTypeChange }) => {
         />{" "}
         Phrase Match
       </label>
-      <label>
+      <label className="flex flex-row items-center justify-center gap-0.5 text-sm">
         <input
           type="checkbox"
           name="exact"

@@ -6,7 +6,7 @@ export const AboutView = () => {
       <div className="flex flex-col items-start gap-3 mb-5">
         <h1 className="mb-3 text-3xl font-bold text-center">My Story</h1>
         <div className="flex flex-col items-center justify-between w-full gap-4 md:flex-row">
-          <div className="w-[20%] max-w-[60%]">
+          <div className="w-[60%] lg:w-[20%]">
             <Image
               src="/story.png"
               alt="My Story Illustration"
@@ -66,7 +66,7 @@ export const AboutView = () => {
               input.
             </li>
           </ul>
-          <div className="w-[30%] max-w-[60%]">
+          <div className="w-[60%] lg:w-[30%]">
             <Image
               src="/features.png"
               alt="App Features Illustration"

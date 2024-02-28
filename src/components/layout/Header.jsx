@@ -13,10 +13,10 @@ export const Header = () => {
     return (
       <li
         key={el.id}
-        className="transition duration-300 rounded-lg hover:bg-gray-100"
+        className="text-sm font-medium text-black transition duration-200 rounded-lg lg:hover:bg-slate-100"
       >
         <Link
-          className="block px-3 py-2 text-sm font-medium text-black"
+          className="block px-3 py-2"
           href={el.href}
         >
           {el.title}
@@ -42,7 +42,7 @@ export const Header = () => {
             Keyword Alchemist
           </h1>
         </Link>
-        <ul className="hidden lg:flex flex-row items-center justify-between gap-5">
+        <ul className="flex-row items-center justify-between hidden gap-5 lg:flex">
           {mappedHeaderLinks}
         </ul>
         <BurgerMenu />

@@ -9,8 +9,6 @@ import { PopupModal } from "../components/HomepageViewComponents/PopupModal";
 
 import { downloadAsCSV, downloadAsPDF } from "../utils/fileOperations";
 
-import { IoSparklesOutline } from "react-icons/io5";
-
 export const HomepageView = () => {
   const [input, setInput] = useState("");
 
@@ -140,7 +138,7 @@ export const HomepageView = () => {
 
   return (
     // max-w-4xl
-    <div className="flex flex-col items-center justify-center w-full py-20 mx-auto">
+    <section className="flex flex-col items-center justify-center w-full pt-10 pb-0 mx-auto lg:pt-20 lg:pb-20">
       <form
         onSubmit={handleSubmit}
         className="w-[90%] md:w-full space-y-6 mb-5"
@@ -157,9 +155,9 @@ export const HomepageView = () => {
         />
         <button
           type="submit"
-          className="flex flex-row items-center justify-center w-full lg:w-1/5 gap-2 px-4 py-3 text-white transition duration-150 bg-blue-500 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="flex flex-row items-center justify-center w-full gap-2 px-4 py-3 text-white transition duration-150 bg-blue-500 rounded-lg shadow lg:w-1/5 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
         >
-          <IoSparklesOutline />
+          <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="32" d="M259.92 262.91 216.4 149.77a9 9 0 0 0-16.8 0l-43.52 113.14a9 9 0 0 1-5.17 5.17L37.77 311.6a9 9 0 0 0 0 16.8l113.14 43.52a9 9 0 0 1 5.17 5.17l43.52 113.14a9 9 0 0 0 16.8 0l43.52-113.14a9 9 0 0 1 5.17-5.17l113.14-43.52a9 9 0 0 0 0-16.8l-113.14-43.52a9 9 0 0 1-5.17-5.17zM108 68 88 16 68 68 16 88l52 20 20 52 20-52 52-20-52-20zm318.67 49.33L400 48l-26.67 69.33L304 144l69.33 26.67L400 240l26.67-69.33L496 144l-69.33-26.67z"></path></svg>
           Generate
         </button>
       </form>
@@ -176,6 +174,6 @@ export const HomepageView = () => {
       )}
 
       {showPopup && <PopupModal setShowPopup={setShowPopup} />}
-    </div>
+    </section>
   );
 };

@@ -15,8 +15,8 @@ export const ContactView = () => {
 
   return (
     <section className="relative text-gray-600 bg-white body-font">
-      <div className="container px-5 py-24 mx-auto">
-        <div className="flex flex-col gap-3 w-full mb-12 text-center">
+      <div className="container px-5 py-12 mx-auto">
+        <div className="flex flex-col w-full gap-3 mb-12 text-center">
           <h1 className="mb-4 text-3xl font-semibold text-gray-900 sm:text-3xl title-font">
             Contact Me
           </h1>

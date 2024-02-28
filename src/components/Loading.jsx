@@ -4,29 +4,13 @@ export const Loading = () => {
       <style jsx>
         {`
           .loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             perspective: 800px;
           }
 
           .loader-cube {
-            width: 100px;
-            height: 100px;
-            position: relative;
             transform-style: preserve-3d;
             transform-origin: 50% 50%;
             animation: rotate 4s infinite linear;
-          }
-
-          .loader-cube:before,
-          .loader-cube:after {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
           }
 
           .loader-cube:before {
@@ -38,11 +22,7 @@ export const Loading = () => {
           }
 
           .loader-cube .face {
-            position: absolute;
-            width: 100%;
-            height: 100%;
             background-color: rgb(252, 248, 248);
-            opacity: 0.8;
             border: 2px solid rgb(252, 250, 250);
           }
 
@@ -87,16 +67,20 @@ export const Loading = () => {
           }
         `}
       </style>
-      <div className="loader">
-        <div className="loader-cube">
-          <div className="face"></div>
-          <div className="face"></div>
-          <div className="face"></div>
-          <div className="face"></div>
-          <div className="face"></div>
-          <div className="face"></div>
+
+      <div className="loader absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2">
+        <div
+          className="loader-cube relative w-[100px] h-[100px] before:content-[''] before:absolute before:w-full before:h-full before:bg-transparent
+          after:content-[''] after:absolute after:w-full after:h-full after:bg-transparent"
+        >
+          <div className="absolute w-full h-full face opacity-80"></div>
+          <div className="absolute w-full h-full face opacity-80"></div>
+          <div className="absolute w-full h-full face opacity-80"></div>
+          <div className="absolute w-full h-full face opacity-80"></div>
+          <div className="absolute w-full h-full face opacity-80"></div>
+          <div className="absolute w-full h-full face opacity-80"></div>
         </div>
       </div>
-    </div> 
+    </div>
   );
 };
